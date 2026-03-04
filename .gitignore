@@ -1,0 +1,73 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp
+.pnp.js
+
+# Production
+build/
+dist/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+.env
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Java / Maven (Legacy cleanup)
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/
+mvnw
+mvnw.cmd
+
+# Misc
+.DS_Store
+Thumbs.db
+backend_debug.log
+*.sql
+*.dump
+backup.sql
+loanflow.dump
+loanflow_plain.sql
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*.iml
+.project
+.settings/
+.classpath
+.factorypath
