@@ -4,7 +4,6 @@ sqlmodel
 alembic
 psycopg2-binary
 passlib[bcrypt]
-bcrypt==3.2.0
 python-jose[cryptography]
 python-multipart
 python-dotenv

@@ -13,12 +13,11 @@ import schemas
 import auth
 from services import LoanService
 
-# Setup Logging
+# Setup Logging - stdout only (safe for cloud/container environments)
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler("backend_debug.log"),
         logging.StreamHandler()
     ]
 )
