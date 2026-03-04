@@ -57,8 +57,13 @@ app = FastAPI(title="LoanFlow API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Allow all origins for cloud deployments (Vercel, etc.)
-    allow_credentials=True,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:3001",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:3001",
+        "https://loanflow1.vercel.app"
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
