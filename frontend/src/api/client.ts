@@ -9,7 +9,7 @@ import axios from "axios";
  *  - Automatic attachment of authentication headers
  */
 const API_BASE_URL =
-  process.env.REACT_APP_API_URL || "http://localhost:8080";
+  process.env.REACT_APP_API_URL || "http://localhost:8000";
 
 const client = axios.create({
   baseURL: API_BASE_URL,
