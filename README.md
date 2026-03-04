@@ -1,17 +1,16 @@
-
 # 🚀 LOANFLOW – Enterprise Loan Management Platform
 
-LOANFLOW is a production-ready full-stack web application that streamlines the end-to-end loan lifecycle for financial organizations.
-It enables **customers to apply for loans**, **analysts to review and approve applications**, and **administrators to manage users and system metrics** — all secured using **JWT authentication and role-based access control**.
+LOANFLOW is a production-ready, full-stack enterprise application that streamlines the end-to-end loan lifecycle.
+It enables **customers to apply for loans**, **analysts to review/approve applications**, and **administrators to manage users and system metrics** — all secured using **JWT authentication** and **role-based access control (RBAC)**.
 
-This project demonstrates real-world software engineering practices including scalable backend APIs, cloud deployment, secure authentication, and modern responsive UI design.
+This project demonstrates modern software engineering practices: a high-performance **FastAPI** backend, **SQLModel** for database integrity, and a premium **React (TypeScript)** frontend.
 
 ---
 
 ## 🌐 Live Demo
 
-> 🔗 **Frontend:** *(Vercel URL coming soon)*
-> 🔗 **Backend API:** *(Cloud Run URL coming soon)*
+> 🔗 **Frontend:** [https://loanflow-frontend.vercel.app](https://loanflow-frontend.vercel.app) *(Coming Soon)*
+> 🔗 **Backend API:** [https://loanflow-api.railway.app](https://loanflow-api.railway.app) *(Coming Soon)*
 
 ### 🔑 Demo Credentials
 
@@ -21,135 +20,78 @@ This project demonstrates real-world software engineering practices including sc
 | Analyst  | analyst3 | Ana         |
 | Customer | sai      | Sai         |
 
-> ⚠️ Demo data may reset periodically.
-
 ---
 
-## 🎯 Business Value
+## 🏗 Architecture Overview
 
-✔ Automates loan application processing
-✔ Reduces manual review effort
-✔ Improves auditability and traceability
-✔ Enforces secure role-based access
-✔ Designed for cloud scalability
+```mermaid
+graph TD
+    A[React Frontend] -->|REST API + JWT| B[FastAPI Backend]
+    B -->|SQLModel / SQLAlchemy| C[(PostgreSQL Database)]
+```
 
 ---
 
 ## ✨ Core Features
 
-### 🔐 Security & Authentication
+### 🔐 Security & RBAC
+* JWT-based stateless authentication.
+* Role-based authorization: **ADMIN**, **ANALYST**, and **CUSTOMER**.
+* BCrypt password hashing for secure storage.
+* CORS protection and secure API headers.
 
-* JWT-based stateless authentication
-* Role-based authorization (ADMIN / ANALYST / CUSTOMER)
-* BCrypt password encryption
-* Secure REST APIs with Spring Security
-* CORS protection
+### 👤 Customer Experience
+* Streamlined application forms for new loans.
+* Real-time status tracking via personal dashboards.
+* Transparent view of historical applications.
 
-### 👤 Customer Portal
+### 🧑‍💼 Analyst Workflow
+* Centralized queue for pending applications.
+* One-click Approval/Rejection with status synchronization.
+* Advanced filtering and paginated data tables.
 
-* Submit loan applications
-* Track application status in real time
-* View loan history
-
-### 🧑‍💼 Analyst Dashboard
-
-* Review loan applications
-* Approve or reject loans
-* Filter and paginate loan records
-* Real-time status updates
-
-### 🛠 Admin Console
-
-* View system metrics dashboard
-* Manage users and roles
-* Activate / deactivate accounts
-* Monitor platform usage
-
-### 🎨 UI/UX
-
-* Responsive Material UI design
-* Professional dashboard layout
-* Animated cards and loading skeletons
-* Mobile-friendly experience
+### 🛠 Administrative Control
+* Real-time system metrics and platform health overview.
+* Comprehensive user management (Activate/Deactivate/Role Assignment).
+* Direct database integrity monitoring.
 
 ---
 
 ## 🧰 Technology Stack
 
 ### Frontend
-
-* React (TypeScript)
-* Material UI (MUI)
-* Axios
-* React Router
-* Vercel Hosting
+* **React 19** (TypeScript)
+* **Material UI (MUI)** for premium components
+* **Framer Motion** for smooth, futuristic animations
+* **React Router 7** for optimized navigation
+* **Axios** for API orchestration
 
 ### Backend
-
-* Java 17
-* Spring Boot
-* Spring Security
-* JWT Authentication
-* REST APIs
-* Hibernate / JPA
-* Docker
-* Google Cloud Run
+* **Python 3.x**
+* **FastAPI** (High-performance asynchronous framework)
+* **SQLModel / SQLAlchemy** (ORM)
+* **Pydantic** for data validation
+* **python-jose** for JWT management
+* **Uvicorn** (ASGI Server)
 
 ### Database
-
-* PostgreSQL (Supabase)
-
-### DevOps
-
-* GitHub
-* CI/CD pipelines
-* Cloud containerization
-
----
-
-## 🏗 Architecture Overview
-
-```
-[ React Frontend (Vercel) ]
-            |
-            v
-[ Spring Boot API (Google Cloud Run) ]
-            |
-            v
-[ PostgreSQL Database (Supabase) ]
-```
-
----
-
-## 📸 Screenshots
-
-> Add screenshots after deployment:
-
-```
-/screenshots
- ├─ login.png
- ├─ admin-dashboard.png
- ├─ analyst-dashboard.png
- ├─ loan-approval.png
- └─ mobile-view.png
-```
-
-Example markdown:
-
-```md
-![Admin Dashboard](screenshots/admin-dashboard.png)
-```
+* **PostgreSQL** (Hosted on Supabase/AWS RDS)
 
 ---
 
 ## 📂 Project Structure
 
-```
+```text
 LOANFLOW/
- ├── backend/        → Spring Boot backend
- ├── frontend/       → React frontend
- ├── .gitignore
- ├── README.md
+ ├── backend/        → FastAPI Python Backend
+ │    ├── auth.py    → JWT & Security logic
+ │    ├── main.py    → API Router & Endpoints
+ │    ├── models.py  → Database Schemas (SQLModel)
+ │    └── requirements.txt
+ ├── frontend/       → React TypeScript Frontend
+ │    ├── src/pages/ → Dashboard & Feature views
+ │    └── src/theme/ → Bespoke Cyber/Visual overrides
+ └── .gitignore
 ```
 
 ---
@@ -157,113 +99,25 @@ LOANFLOW/
 ## ⚙️ Local Development Setup
 
 ### ✅ Prerequisites
+* **Python 3.10+**
+* **Node.js 18+**
+* **Git**
 
-* Java 17+
-* Node.js 18+
-* Maven
-* PostgreSQL or Supabase
-* Git
+### ▶️ Backend Setup
+1. Navigate to backend: `cd backend`
+2. Create virtual environment: `python -m venv venv`
+3. Activate venv: `.\venv\Scripts\activate` (Windows) or `source venv/bin/activate` (Mac/Linux)
+4. Install dependencies: `pip install -r requirements.txt`
+5. Run server: `uvicorn main:app --reload`
 
----
+*Backend runs at: `http://localhost:8000`*
 
-### ▶️ Backend
+### ▶️ Frontend Setup
+1. Navigate to frontend: `cd frontend`
+2. Install dependencies: `npm install`
+3. Start development server: `npm start`
 
-```bash
-cd backend
-mvn clean install
-mvn spring-boot:run
-```
-
-Backend runs at:
-
-```
-http://localhost:8080
-```
-
----
-
-### ▶️ Frontend
-
-```bash
-cd frontend
-npm install
-npm start
-```
-
-Frontend runs at:
-
-```
-http://localhost:3000
-```
-
----
-
-### 🔑 Environment Variables (Backend)
-
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/loanflow
-spring.datasource.username=postgres
-spring.datasource.password=postgres
-
-jwt.secret=your_secure_secret_key
-```
-
----
-
-## 🔌 API Reference (Sample)
-
-### 🔐 Authentication
-
-```
-POST /api/auth/login
-POST /api/auth/register
-```
-
-### 👤 Loans
-
-```
-POST   /api/loans/apply
-GET    /api/loans
-PATCH  /api/loans/{id}/approve
-PATCH  /api/loans/{id}/reject
-```
-
-### 🛠 Admin
-
-```
-GET  /api/admin/metrics
-GET  /api/admin/users
-PUT  /api/admin/users/{id}/role
-PUT  /api/admin/users/{id}/active
-```
-
----
-
-## 🚀 Deployment
-
-### Frontend
-
-* Hosted on **Vercel**
-
-### Backend
-
-* Containerized using Docker
-* Deployed on **Google Cloud Run**
-
-### Database
-
-* Hosted on **Supabase PostgreSQL**
-
----
-
-## 📈 Future Enhancements
-
-* Loan analytics dashboard
-* Email notifications
-* Audit logging
-* Document uploads
-* CI/CD automation
-* Role hierarchy
+*Frontend runs at: `http://localhost:3000`*
 
 ---
 
@@ -273,17 +127,9 @@ PUT  /api/admin/users/{id}/active
 Master’s in Computer Science
 Full Stack Software Engineer
 
-📧 Email: [saivamshidasari48@email.com](mailto:your@email.com)
-🔗 LinkedIn: [https://www.linkedin.com/in/sai-vamshi-dasari-91279639a/](https://linkedin.com/in/your-profile)
-💻 GitHub: [https://github.com/your-username](https://github.com/your-username)
+📧 Email: [saivamshidasari48@gmail.com](mailto:saivamshidasari48@gmail.com)
+🔗 LinkedIn: [https://www.linkedin.com/in/sai-vamshi-dasari-91279639a/](https://www.linkedin.com/in/sai-vamshi-dasari-91279639a/)
+💻 GitHub: [https://github.com/saivamshidasari9-ux](https://github.com/saivamshidasari9-ux)
 
 ---
-
-## ⭐ Support
-
-If you find this project useful, please ⭐ the repository and feel free to connect!
-
----
-
----
-
+*Cleaned and updated: March 2026*
