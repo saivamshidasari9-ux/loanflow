@@ -148,30 +148,58 @@ export default function LoginPage() {
                   LOG IN
                 </Button>
 
-                <Box sx={{ pt: 2, textAlign: "center" }}>
-                  <Typography className="mono" sx={{ color: "var(--text-muted)", fontSize: "0.7rem" }}>
-                    NO ACCOUNT?{" "}
-                    <Typography
-                      component={RouterLink}
-                      to="/signup"
-                      className="mono"
-                      sx={{
-                        color: "#fbbf24",
-                        fontWeight: 900,
-                        textDecoration: "none",
-                        fontSize: "0.7rem",
-                        "&:hover": { textDecoration: "underline" }
-                      }}
-                    >
-                      [ CREATE_ACCOUNT ]
-                    </Typography>
+                <Typography className="mono" sx={{ color: "var(--text-muted)", fontSize: "0.7rem" }}>
+                  NO ACCOUNT?{" "}
+                  <Typography
+                    component={RouterLink}
+                    to="/signup"
+                    className="mono"
+                    sx={{
+                      color: "#fbbf24",
+                      fontWeight: 900,
+                      textDecoration: "none",
+                      fontSize: "0.7rem",
+                      "&:hover": { textDecoration: "underline" }
+                    }}
+                  >
+                    [ CREATE_ACCOUNT ]
                   </Typography>
-                </Box>
-              </Stack>
+                </Typography>
+              </Box>
+
+              {/* --- DEMO ACCOUNTS BOX --- */}
+              <Box
+                sx={{
+                  mt: 4,
+                  p: 2.5,
+                  border: "1px dashed rgba(6,182,212,0.3)",
+                  borderRadius: "8px",
+                  backgroundColor: "rgba(0,0,0,0.2)"
+                }}
+              >
+                <Typography className="mono" sx={{ color: "var(--cyber-primary)", fontSize: "0.75rem", fontWeight: 700, mb: 1.5, letterSpacing: "1px" }}>
+                    // DEMO_ACCESS_CREDENTIALS
+                </Typography>
+                {[
+                  { role: "ADMIN_PORTAL", creds: "admin / admin123" },
+                  { role: "ANALYST_NODE", creds: "analyst / analyst123" },
+                  { role: "CLIENT_HUD", creds: "customer / customer123" }
+                ].map((demo, idx) => (
+                  <Stack key={idx} direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 1, pb: 1, borderBottom: idx < 2 ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
+                    <Typography className="mono" sx={{ color: "var(--text-muted)", fontSize: "0.7rem", opacity: 0.8 }}>
+                      {demo.role}
+                    </Typography>
+                    <Typography className="mono" sx={{ color: "#fbbf24", fontSize: "0.75rem", fontWeight: 700 }}>
+                      {demo.creds}
+                    </Typography>
+                  </Stack>
+                ))}
+              </Box>
             </Stack>
-          </Box>
-        </Container>
+          </Stack>
       </Box>
-    </Box>
+    </Container>
+      </Box >
+    </Box >
   );
 }

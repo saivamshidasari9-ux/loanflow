@@ -144,6 +144,21 @@ export default function HomePage() {
                       APPLY NOW
                     </Button>
                   </Stack>
+                  <Box sx={{ mt: 3, opacity: 0.8 }}>
+                    <Typography
+                      component={RouterLink}
+                      to="/login"
+                      className="mono"
+                      sx={{
+                        color: "var(--cyber-primary)",
+                        fontSize: "0.75rem",
+                        textDecoration: "none",
+                        "&:hover": { textDecoration: "underline", color: "white", opacity: 1 }
+                      }}
+                    >
+                      [ DEMO_ACCESS_AVAILABLE → ]
+                    </Typography>
+                  </Box>
                 </Stack>
               </Box>
             </Grid>
