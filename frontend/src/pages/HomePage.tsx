@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Container, Typography, Button, Stack, Grid, useTheme, useMediaQuery } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
 import AppHeader from "../components/AppHeader";
 import { motion } from "framer-motion";
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
